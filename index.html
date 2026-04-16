@@ -508,7 +508,7 @@
         <script>
             (function () {
                 var tasks = [
-                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 0 },
+                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 0, started: true },
                     { name: "Corrección P1 (Hidrograma)", start: "2026-04-17", end: "2026-04-26", progress: 0 },
                     { name: "Corrección P2 (Período retorno)", start: "2026-04-27", end: "2026-05-06", progress: 0 },
                     { name: "Propuesta P3 (Escala híbrida)", start: "2026-05-07", end: "2026-05-17", progress: 0 },
@@ -547,7 +547,7 @@
                     { name: "Junio", start: "2026-06-01", end: "2026-07-01" },
                     { name: "Julio", start: "2026-07-01", end: "2026-08-01" },
                     { name: "Agosto", start: "2026-08-01", end: "2026-09-01" },
-                    { name: "Sept.", start: "2026-09-01", end: "2026-10-01" },
+                    { name: "Septiembre", start: "2026-09-01", end: "2026-10-01" },
                     { name: "Octubre", start: "2026-10-01", end: "2026-11-01" },
                 ];
 
@@ -592,7 +592,7 @@
                     var right = pct(new Date(new Date(t.end).getTime() + 864e5));
                     var width = right - left;
                     var delay = 0.35 + i * 0.07;
-                    var borderColor = t.progress > 0 ? 'var(--progress)' : 'var(--pending-border)';
+                    var borderColor = (t.progress > 0 || t.started) ? 'var(--progress)' : 'var(--pending-border)';
 
                     gridHTML +=
                         '<div class="task-row" style="animation-delay:' + delay + 's;">' +
