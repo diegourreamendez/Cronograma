@@ -1,556 +1,615 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cronograma Diego Urrea — Abril–Oct 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #F7F5F0;
-    --bg-card: #FFFFFF;
-    --text-primary: #1a1a18;
-    --text-secondary: #6b6960;
-    --text-tertiary: #9e9b91;
-    --text-date: #403e38;
-    --border: #e5e2da;
-    --border-light: #eeece6;
-    --bg-pending: #e5e2da;
-    --progress: #0E8A62;
-    --pending-border: #d94030; /* Rojo para tareas pendientes */
-    --today: #2563EB; /* Azul para el marcador de HOY */
-    --friday: rgba(232, 196, 155, 0.25);
-    --paper1: #6C63C8;
-    --paper2: #8E5DB5;
-    --paper3: #CC5A2B;
-    --moodle: #8B7D30;
-    --t21: #0E8A62;
-    --t23: #2468A8;
-    --prep-cong: #8C6B99;
-    --congreso: #C44D8B;
-    --disert: #B83232;
-    --font-display: 'DM Serif Display', Georgia, serif;
-    --font-body: 'Outfit', system-ui, sans-serif;
-    --radius: 10px;
-    --radius-sm: 6px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma Diego Urrea — Abril–Oct 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F7F5F0;
+            --bg-card: #FFFFFF;
+            --text-primary: #1a1a18;
+            --text-secondary: #6b6960;
+            --text-tertiary: #9e9b91;
+            --text-date: #403e38;
+            --border: #e5e2da;
+            --border-light: #eeece6;
+            --bg-pending: #e5e2da;
+            --progress: #0E8A62;
+            --pending-border: #d94030;
+            /* Rojo para tareas pendientes */
+            --today: #2563EB;
+            /* Azul para el marcador de HOY */
+            --friday: rgba(232, 196, 155, 0.25);
+            --paper1: #6C63C8;
+            --paper2: #8E5DB5;
+            --paper3: #CC5A2B;
+            --moodle: #8B7D30;
+            --t21: #0E8A62;
+            --t23: #2468A8;
+            --prep-cong: #8C6B99;
+            --congreso: #C44D8B;
+            --disert: #B83232;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Outfit', system-ui, sans-serif;
+            --radius: 10px;
+            --radius-sm: 6px;
+        }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1a1916;
-      --bg-card: #242320;
-      --text-primary: #e8e5dd;
-      --text-secondary: #9a9688;
-      --text-tertiary: #6b6860;
-      --text-date: #c8c4b7;
-      --border: #33312c;
-      --border-light: #2a2925;
-      --bg-pending: #33312c;
-      --progress: #2BB880;
-      --pending-border: #e85040;
-      --today: #3B82F6;
-      --friday: rgba(180, 140, 80, 0.08);
-      --paper1: #8B84E0;
-      --paper2: #A87BD0;
-      --paper3: #E07040;
-      --moodle: #B8A844;
-      --t21: #2BB880;
-      --t23: #4A90D0;
-      --prep-cong: #B490C0;
-      --congreso: #E070A8;
-      --disert: #D85050;
-    }
-  }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1916;
+                --bg-card: #242320;
+                --text-primary: #e8e5dd;
+                --text-secondary: #9a9688;
+                --text-tertiary: #6b6860;
+                --text-date: #c8c4b7;
+                --border: #33312c;
+                --border-light: #2a2925;
+                --bg-pending: #33312c;
+                --progress: #2BB880;
+                --pending-border: #e85040;
+                --today: #3B82F6;
+                --friday: rgba(180, 140, 80, 0.08);
+                --paper1: #8B84E0;
+                --paper2: #A87BD0;
+                --paper3: #E07040;
+                --moodle: #B8A844;
+                --t21: #2BB880;
+                --t23: #4A90D0;
+                --prep-cong: #B490C0;
+                --congreso: #E070A8;
+                --disert: #D85050;
+            }
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  body {
-    background: var(--bg);
-    font-family: var(--font-body);
-    color: var(--text-primary);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 2.5rem 1.5rem;
-  }
+        body {
+            background: var(--bg);
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+        }
 
-  .container { width: 100%; max-width: 1100px; }
+        .container {
+            width: 100%;
+            max-width: 1550px;
+        }
 
-  .header {
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
+        /* Se aumentó de 1100px a 1550px para ocupar más pantalla */
 
-  .header-top {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 6px;
-  }
+        .header {
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
 
-  .header h1 {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--text-primary);
-  }
+        .header-top {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
 
-  .header .period {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--text-tertiary);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+        .header h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+        }
 
-  .header .subtitle {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-    margin-top: 4px;
-  }
+        .header .period {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
-  .divider {
-    width: 48px;
-    height: 2.5px;
-    background: var(--paper1);
-    border-radius: 2px;
-    margin-top: 14px;
-    opacity: 0;
-    animation: scaleIn 0.5s ease 0.3s forwards;
-  }
+        .header .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-top: 4px;
+        }
 
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    margin-bottom: 1.75rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.15s forwards;
-  }
+        .divider {
+            width: 48px;
+            height: 2.5px;
+            background: var(--paper1);
+            border-radius: 2px;
+            margin-top: 14px;
+            opacity: 0;
+            animation: scaleIn 0.5s ease 0.3s forwards;
+        }
 
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: var(--text-secondary);
-  }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 1.75rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.15s forwards;
+        }
 
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 3px;
-    flex-shrink: 0;
-  }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
 
-  .legend-line {
-    width: 14px;
-    height: 2px;
-    border-radius: 1px;
-    flex-shrink: 0;
-  }
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
 
-  .legend-friday {
-    width: 10px;
-    height: 10px;
-    border-radius: 3px;
-    flex-shrink: 0;
-    background: rgba(200, 165, 100, 0.35);
-    border: 1px solid rgba(200, 165, 100, 0.25);
-  }
+        .legend-line {
+            width: 14px;
+            height: 2px;
+            border-radius: 1px;
+            flex-shrink: 0;
+        }
 
-  .gantt-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem 1.5rem 2.25rem;
-    overflow-x: auto;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.25s forwards;
-  }
+        .legend-friday {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            background: rgba(200, 165, 100, 0.35);
+            border: 1px solid rgba(200, 165, 100, 0.25);
+        }
 
-  .gantt-wrapper {
-    position: relative;
-    min-width: 1400px;
-  }
+        .gantt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem 1.5rem 2.25rem;
+            overflow-x: auto;
+            opacity: 0;
+            animation: fadeUp 0.7s ease 0.25s forwards;
+        }
 
-  .month-row {
-    display: flex;
-    margin-left: 235px;
-    border-bottom: 1px solid var(--border);
-  }
+        .gantt-wrapper {
+            position: relative;
+            min-width: 1100px;
+            /* Se redujo de 1400px para que encaje mejor sin deslizar */
+        }
 
-  .month-cell {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-tertiary);
-    padding: 0 0 10px 6px;
-  }
+        .month-row {
+            display: flex;
+            margin-left: 235px;
+            border-bottom: 1px solid var(--border);
+        }
 
-  .week-row {
-    display: flex;
-    margin-left: 235px;
-    border-bottom: 1px solid var(--border-light);
-  }
+        .month-cell {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-tertiary);
+            padding: 0 0 10px 6px;
+        }
 
-  .week-cell {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-tertiary);
-    padding: 7px 0 7px 2px;
-    text-align: center;
-    border-left: 0.5px solid var(--border-light);
-  }
+        .week-row {
+            display: flex;
+            margin-left: 235px;
+            border-bottom: 1px solid var(--border-light);
+        }
 
-  .week-cell:first-child { border-left: none; }
+        .week-cell {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            padding: 7px 0 7px 2px;
+            text-align: center;
+            border-left: 0.5px solid var(--border-light);
+        }
 
-  .grid-area {
-    position: relative;
-    margin-left: 235px;
-  }
+        .week-cell:first-child {
+            border-left: none;
+        }
 
-  .grid-col {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    border-left: 0.5px solid var(--border-light);
-  }
+        .grid-area {
+            position: relative;
+            margin-left: 235px;
+        }
 
-  .friday-highlight {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: var(--friday);
-    border-radius: 2px;
-  }
+        .grid-col {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            border-left: 0.5px solid var(--border-light);
+        }
 
-  .today-marker {
-    position: absolute;
-    top: -30px;
-    bottom: 0;
-    width: 2px;
-    background: var(--today);
-    z-index: 20;
-    border-radius: 1px;
-  }
+        .friday-highlight {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background: var(--friday);
+            border-radius: 2px;
+        }
 
-  .today-tag {
-    position: absolute;
-    top: -32px;
-    transform: translateX(-50%);
-    background: var(--today);
-    color: white;
-    font-size: 0.58rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    padding: 3px 9px;
-    border-radius: 20px;
-    white-space: nowrap;
-    z-index: 21;
-  }
+        .today-marker {
+            position: absolute;
+            top: -30px;
+            bottom: 0;
+            width: 2px;
+            background: var(--today);
+            z-index: 20;
+            border-radius: 1px;
+        }
 
-  .task-row {
-    position: relative;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 0.5px solid var(--border-light);
-    opacity: 0;
-    animation: fadeRight 0.5s ease forwards;
-  }
+        .today-tag {
+            position: absolute;
+            top: -32px;
+            transform: translateX(-50%);
+            background: var(--today);
+            color: white;
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 3px 9px;
+            border-radius: 20px;
+            white-space: nowrap;
+            z-index: 21;
+        }
 
-  .task-row:last-child { border-bottom: none; }
+        .task-row {
+            position: relative;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border-bottom: 0.5px solid var(--border-light);
+            opacity: 0;
+            animation: fadeRight 0.5s ease forwards;
+        }
 
-  .task-label {
-    position: absolute;
-    right: calc(100% + 15px);
-    width: 220px;
-    text-align: right;
-  }
+        .task-row:last-child {
+            border-bottom: none;
+        }
 
-  .task-label-name {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    line-height: 1.3;
-  }
+        .task-label {
+            position: absolute;
+            right: calc(100% + 15px);
+            width: 220px;
+            text-align: right;
+        }
 
-  .task-label-dates {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-date);
-    margin-top: 2px;
-  }
+        .task-label-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
 
-  .task-bar {
-    position: absolute;
-    height: 30px;
-    border-radius: var(--radius-sm);
-    z-index: 10;
-    cursor: default;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    background: var(--bg-pending);
-    border: 1.5px solid transparent;
-    overflow: hidden;
-  }
+        .task-label-dates {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-date);
+            margin-top: 2px;
+        }
 
-  .task-progress {
-    height: 100%;
-    background: var(--progress);
-    transition: width 0.3s ease;
-  }
+        .task-bar {
+            position: absolute;
+            height: 30px;
+            border-radius: var(--radius-sm);
+            z-index: 10;
+            cursor: default;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            background: var(--bg-pending);
+            border: 1.5px solid transparent;
+            overflow: hidden;
+        }
 
-  .task-bar:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-  }
+        .task-progress {
+            height: 100%;
+            background: var(--progress);
+            transition: width 0.3s ease;
+        }
 
-  .glossary {
-    margin-top: 2rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg);
-    border-radius: var(--radius-sm);
-    border: 1px dashed var(--border);
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.8s forwards;
-  }
+        .task-bar:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+        }
 
-  .glossary-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+        .glossary {
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            border: 1px dashed var(--border);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.8s forwards;
+        }
 
-  .glossary-items {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+        .glossary-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
 
-  .glossary-item {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-  }
+        .glossary-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-  .glossary-item strong {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
+        .glossary-item {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
 
-  .summary {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 1.2s forwards;
-  }
+        .glossary-item strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
 
-  .stat { display: flex; flex-direction: column; gap: 2px; }
+        .summary {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 1.2s forwards;
+        }
 
-  .stat-value {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--text-primary);
-  }
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
 
-  .stat-label {
-    font-size: 0.7rem;
-    color: var(--text-tertiary);
-    font-weight: 400;
-  }
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
 
-  @keyframes fadeRight {
-    from { opacity: 0; transform: translateX(-8px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
 
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scaleX(0); transform-origin: left; }
-    to { opacity: 1; transform: scaleX(1); }
-  }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  @media (max-width: 640px) {
-    body { padding: 1rem 0.75rem; }
-    .header h1 { font-size: 1.5rem; }
-    .gantt-card { padding: 1.25rem 1rem; }
-  }
-</style>
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .gantt-card {
+                padding: 1.25rem 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
 
-  <div class="header">
-    <div class="header-top">
-      <h1>Cronograma Diego Urrea</h1>
-      <span class="period">Abr – Oct 2026</span>
-    </div>
-    <p class="subtitle">WaMA-WaDiT · Correcciones de papers · Congreso · Disertación</p>
-    <div class="divider"></div>
-  </div>
+        <div class="header">
+            <div class="header-top">
+                <h1>Cronograma Diego Urrea</h1>
+                <span class="period">Abr – Oct 2026</span>
+            </div>
+            <p class="subtitle">WaMA-WaDiT · Correcciones de papers · Congreso · Disertación</p>
+            <div class="divider"></div>
+        </div>
 
-  <div class="legend">
-    <span class="legend-item"><span class="legend-dot" style="background:var(--bg-pending); border: 1.5px solid var(--pending-border);"></span>Pendiente</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--bg-pending); border: 1.5px solid var(--progress);"></span>En progreso</span>
-    <span class="legend-item"><span class="legend-friday"></span>Dedicación proyecto inundación Rep. Dominicana (Viernes)</span>
-    <span class="legend-item"><span class="legend-line" style="background:var(--today)"></span>Hoy</span>
-  </div>
+        <div class="legend">
+            <span class="legend-item"><span class="legend-dot"
+                    style="background:var(--bg-pending); border: 1.5px solid var(--pending-border);"></span>Pendiente</span>
+            <span class="legend-item"><span class="legend-dot"
+                    style="background:var(--bg-pending); border: 1.5px solid var(--progress);"></span>En progreso</span>
+            <span class="legend-item"><span class="legend-friday"></span>Dedicación proyecto inundación Rep. Dominicana
+                (Viernes)</span>
+            <span class="legend-item"><span class="legend-line" style="background:var(--today)"></span>Hoy</span>
+        </div>
 
-  <div class="gantt-card">
-    <div class="gantt-wrapper" id="gantt"></div>
+        <div class="gantt-card">
+            <div class="gantt-wrapper" id="gantt"></div>
 
-    <div class="glossary">
-      <div class="glossary-title">Descripción de artículos (Papers)</div>
-      <div class="glossary-items">
-        <div class="glossary-item"><strong>P1 (Paper 1):</strong> Hidrograma sintético.</div>
-        <div class="glossary-item"><strong>P2 (Paper 2):</strong> Periodo de retorno conjunto en hidrograma.</div>
-        <div class="glossary-item"><strong>P3 (Paper 3):</strong> Reconstrucción a escala híbrida.</div>
-      </div>
-    </div>
+            <div class="glossary">
+                <div class="glossary-title">Descripción de artículos (Papers)</div>
+                <div class="glossary-items">
+                    <div class="glossary-item"><strong>P1 (Paper 1):</strong> Hidrograma sintético.</div>
+                    <div class="glossary-item"><strong>P2 (Paper 2):</strong> Periodo de retorno conjunto en hidrograma.
+                    </div>
+                    <div class="glossary-item"><strong>P3 (Paper 3):</strong> Reconstrucción a escala híbrida.</div>
+                </div>
+            </div>
 
-    <div class="summary">
-      <div class="stat">
-        <span class="stat-value">29</span>
-        <span class="stat-label">semanas totales</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">3</span>
-        <span class="stat-label">papers</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">2</span>
-        <span class="stat-label">tareas WaMA-WaDiT</span>
-      </div>
-      <div class="stat">
-        <span class="stat-value">18 oct</span>
-        <span class="stat-label">fecha fin</span>
-      </div>
-    </div>
-  </div>
+            <div class="summary">
+                <div class="stat">
+                    <span class="stat-value">29</span>
+                    <span class="stat-label">semanas totales</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">papers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">2</span>
+                    <span class="stat-label">tareas WaMA-WaDiT</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">18 oct</span>
+                    <span class="stat-label">fecha fin</span>
+                </div>
+            </div>
+        </div>
 
-<script>
-(function() {
-  var tasks = [
-    { name: "Prep. slides doctorado",              start: "2026-04-16", end: "2026-05-31", progress: 0 },
-    { name: "Corrección P1 (Hidrograma)",          start: "2026-04-17", end: "2026-04-26", progress: 0 },
-    { name: "Corrección P2 (Período retorno)",     start: "2026-04-27", end: "2026-05-06", progress: 0 },
-    { name: "Propuesta P3 (Escala híbrida)",       start: "2026-05-07", end: "2026-05-17", progress: 0 },
-    { name: "T2.3 Downscaling climático",          start: "2026-05-18", end: "2026-08-02", progress: 0 },
-    { name: "Prep. presentación congreso",         start: "2026-06-17", end: "2026-06-19", progress: 0 },
-    { name: "Congreso",                            start: "2026-06-22", end: "2026-06-26", progress: 0 },
-    { name: "Subir curso a Moodle",                start: "2026-07-13", end: "2026-07-15", progress: 0 },
-    { name: "T2.1 Errores sistemáticos",           start: "2026-08-03", end: "2026-10-18", progress: 0 },
-    { name: "Corrección P3 (Escala híbrida)",      start: "2026-08-03", end: "2026-09-27", progress: 0 }
-  ];
+        <script>
+            (function () {
+                var tasks = [
+                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 0 },
+                    { name: "Corrección P1 (Hidrograma)", start: "2026-04-17", end: "2026-04-26", progress: 0 },
+                    { name: "Corrección P2 (Período retorno)", start: "2026-04-27", end: "2026-05-06", progress: 0 },
+                    { name: "Propuesta P3 (Escala híbrida)", start: "2026-05-07", end: "2026-05-17", progress: 0 },
+                    { name: "T2.3 Downscaling climático", start: "2026-05-18", end: "2026-08-02", progress: 0 },
+                    { name: "Prep. presentación congreso", start: "2026-06-17", end: "2026-06-19", progress: 0 },
+                    { name: "Congreso", start: "2026-06-22", end: "2026-06-26", progress: 0 },
+                    { name: "Subir curso a Moodle", start: "2026-07-13", end: "2026-07-15", progress: 0 },
+                    { name: "T2.1 Errores sistemáticos", start: "2026-08-03", end: "2026-10-18", progress: 0 },
+                    { name: "Corrección P3 (Escala híbrida)", start: "2026-08-03", end: "2026-09-27", progress: 0 }
+                ];
 
-  var pStart    = new Date("2026-04-16");
-  var pEnd      = new Date("2026-11-02");
-  var today     = new Date("2026-04-16"); /* Se actualiza la línea del "Hoy" al 16 abr */
-  var totalDays = (pEnd - pStart) / 864e5;
-  var gantt     = document.getElementById("gantt");
+                var pStart = new Date("2026-04-16");
+                var pEnd = new Date("2026-11-02");
+                var today = new Date("2026-04-16"); /* Se actualiza la línea del "Hoy" al 16 abr */
+                var totalDays = (pEnd - pStart) / 864e5;
+                var gantt = document.getElementById("gantt");
 
-  function pct(d)  { return ((new Date(d) - pStart) / 864e5 / totalDays * 100); }
-  function fmtDate(s) {
-    var d = new Date(s);
-    var m = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
-    return d.getDate() + " " + m[d.getMonth()];
-  }
+                function pct(d) { return ((new Date(d) - pStart) / 864e5 / totalDays * 100); }
+                function fmtDate(s) {
+                    var d = new Date(s);
+                    var m = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+                    return d.getDate() + " " + m[d.getMonth()];
+                }
 
-  var weeks = [];
-  var wd = new Date(pStart);
-  while (wd < pEnd) {
-    var wEnd = new Date(Math.min(wd.getTime() + 7*864e5, pEnd.getTime()));
-    weeks.push({ start: new Date(wd), end: wEnd });
-    wd = wEnd;
-  }
+                var weeks = [];
+                var wd = new Date(pStart);
+                while (wd < pEnd) {
+                    var wEnd = new Date(Math.min(wd.getTime() + 7 * 864e5, pEnd.getTime()));
+                    weeks.push({ start: new Date(wd), end: wEnd });
+                    wd = wEnd;
+                }
 
-  var months = [
-    { name: "Abril",   start: "2026-04-16", end: "2026-05-01" },
-    { name: "Mayo",    start: "2026-05-01", end: "2026-06-01" },
-    { name: "Junio",   start: "2026-06-01", end: "2026-07-01" },
-    { name: "Julio",   start: "2026-07-01", end: "2026-08-01" },
-    { name: "Agosto",  start: "2026-08-01", end: "2026-09-01" },
-    { name: "Sept.",   start: "2026-09-01", end: "2026-10-01" },
-    { name: "Octubre", start: "2026-10-01", end: "2026-11-01" },
-  ];
+                var months = [
+                    { name: "Abril", start: "2026-04-16", end: "2026-05-01" },
+                    { name: "Mayo", start: "2026-05-01", end: "2026-06-01" },
+                    { name: "Junio", start: "2026-06-01", end: "2026-07-01" },
+                    { name: "Julio", start: "2026-07-01", end: "2026-08-01" },
+                    { name: "Agosto", start: "2026-08-01", end: "2026-09-01" },
+                    { name: "Sept.", start: "2026-09-01", end: "2026-10-01" },
+                    { name: "Octubre", start: "2026-10-01", end: "2026-11-01" },
+                ];
 
-  var monthHTML = '<div class="month-row">';
-  for (var i = 0; i < months.length; i++) {
-    var w = pct(months[i].end) - pct(months[i].start);
-    monthHTML += '<div class="month-cell" style="width:'+w+'%">'+months[i].name+'</div>';
-  }
-  monthHTML += '</div>';
+                var monthHTML = '<div class="month-row">';
+                for (var i = 0; i < months.length; i++) {
+                    var w = pct(months[i].end) - pct(months[i].start);
+                    monthHTML += '<div class="month-cell" style="width:' + w + '%">' + months[i].name + '</div>';
+                }
+                monthHTML += '</div>';
 
-  var weekHTML = '<div class="week-row">';
-  for (var i = 0; i < weeks.length; i++) {
-    var wp = ((weeks[i].end - weeks[i].start) / 864e5 / totalDays * 100);
-    var label = weeks[i].start.getDate() + "/" + (weeks[i].start.getMonth()+1);
-    weekHTML += '<div class="week-cell" style="width:'+wp+'%">'+label+'</div>';
-  }
-  weekHTML += '</div>';
+                var weekHTML = '<div class="week-row">';
+                for (var i = 0; i < weeks.length; i++) {
+                    var wp = ((weeks[i].end - weeks[i].start) / 864e5 / totalDays * 100);
+                    var label = weeks[i].start.getDate() + "/" + (weeks[i].start.getMonth() + 1);
+                    weekHTML += '<div class="week-cell" style="width:' + wp + '%">' + label + '</div>';
+                }
+                weekHTML += '</div>';
 
-  var gridHTML = '<div class="grid-area" style="position:relative;">';
+                var gridHTML = '<div class="grid-area" style="position:relative;">';
 
-  var fd = new Date(pStart);
-  while (fd <= pEnd) {
-    if (fd.getDay() === 5) {
-      var l = pct(fd);
-      var fw = (1 / totalDays * 100);
-      gridHTML += '<div class="friday-highlight" style="left:'+l+'%;width:'+fw+'%;"></div>';
-    }
-    fd = new Date(fd.getTime() + 864e5);
-  }
+                var fd = new Date(pStart);
+                while (fd <= pEnd) {
+                    if (fd.getDay() === 5) {
+                        var l = pct(fd);
+                        var fw = (1 / totalDays * 100);
+                        gridHTML += '<div class="friday-highlight" style="left:' + l + '%;width:' + fw + '%;"></div>';
+                    }
+                    fd = new Date(fd.getTime() + 864e5);
+                }
 
-  for (var i = 1; i < weeks.length; i++) {
-    gridHTML += '<div class="grid-col" style="left:'+pct(weeks[i].start)+'%;"></div>';
-  }
+                for (var i = 1; i < weeks.length; i++) {
+                    gridHTML += '<div class="grid-col" style="left:' + pct(weeks[i].start) + '%;"></div>';
+                }
 
-  var todayPct = pct(today);
-  gridHTML += '<div class="today-marker" style="left:'+todayPct+'%;"></div>';
-  gridHTML += '<div class="today-tag" style="left:'+todayPct+'%;">HOY · 16 ABR</div>';
+                var todayPct = pct(today);
+                gridHTML += '<div class="today-marker" style="left:' + todayPct + '%;"></div>';
+                gridHTML += '<div class="today-tag" style="left:' + todayPct + '%;">HOY · 16 ABR</div>';
 
-  for (var i = 0; i < tasks.length; i++) {
-    var t = tasks[i];
-    var left  = pct(t.start);
-    var right = pct(new Date(new Date(t.end).getTime() + 864e5));
-    var width = right - left;
-    var delay = 0.35 + i * 0.07;
-    var borderColor = t.progress > 0 ? 'var(--progress)' : 'var(--pending-border)';
+                for (var i = 0; i < tasks.length; i++) {
+                    var t = tasks[i];
+                    var left = pct(t.start);
+                    var right = pct(new Date(new Date(t.end).getTime() + 864e5));
+                    var width = right - left;
+                    var delay = 0.35 + i * 0.07;
+                    var borderColor = t.progress > 0 ? 'var(--progress)' : 'var(--pending-border)';
 
-    gridHTML +=
-      '<div class="task-row" style="animation-delay:'+delay+'s;">' +
-        '<div class="task-label">' +
-          '<div class="task-label-name">'+t.name+'</div>' +
-          '<div class="task-label-dates">'+fmtDate(t.start)+' — '+fmtDate(t.end)+'</div>' +
-        '</div>' +
-        '<div class="task-bar" style="left:'+left+'%;width:'+width+'%; border-color:'+borderColor+';">' +
-          '<div class="task-progress" style="width:'+t.progress+'%;"></div>' +
-        '</div>' +
-      '</div>';
-  }
+                    gridHTML +=
+                        '<div class="task-row" style="animation-delay:' + delay + 's;">' +
+                        '<div class="task-label">' +
+                        '<div class="task-label-name">' + t.name + '</div>' +
+                        '<div class="task-label-dates">' + fmtDate(t.start) + ' — ' + fmtDate(t.end) + '</div>' +
+                        '</div>' +
+                        '<div class="task-bar" style="left:' + left + '%;width:' + width + '%; border-color:' + borderColor + ';">' +
+                        '<div class="task-progress" style="width:' + t.progress + '%;"></div>' +
+                        '</div>' +
+                        '</div>';
+                }
 
-  gridHTML += '</div>';
-  gantt.innerHTML = monthHTML + weekHTML + gridHTML;
-})();
-</script>
+                gridHTML += '</div>';
+                gantt.innerHTML = monthHTML + weekHTML + gridHTML;
+            })();
+        </script>
 </body>
+
 </html>
