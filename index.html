@@ -337,6 +337,19 @@
             transition: width 0.3s ease;
         }
 
+        .task-percent {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            z-index: 2;
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 2px rgba(255, 255, 255, 1);
+        }
+
         .task-bar:hover {
             transform: translateY(-1px);
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
@@ -609,6 +622,7 @@
                         '</div>' +
                         '<div class="task-bar' + (t.highlight ? ' highlight' : '') + '" style="left:' + left + '%;width:' + width + '%; border-color:' + borderColor + ';">' +
                         '<div class="task-progress" style="width:' + t.progress + '%;"></div>' +
+                        '<div class="task-percent">' + t.progress + '%</div>' +
                         '</div>' +
                         '</div>';
                 }
