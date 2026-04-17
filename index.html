@@ -39,6 +39,8 @@
             --font-body: 'Outfit', system-ui, sans-serif;
             --radius: 10px;
             --radius-sm: 6px;
+            --highlight: #facc15; /* Yellow-400 */
+            --highlight-border: #eab308; /* Yellow-500 */
         }
 
         @media (prefers-color-scheme: dark) {
@@ -65,6 +67,8 @@
                 --prep-cong: #B490C0;
                 --congreso: #E070A8;
                 --disert: #D85050;
+                --highlight: #eab308; /* Yellow-500 */
+                --highlight-border: #ca8a04; /* Yellow-600 */
             }
         }
 
@@ -149,22 +153,22 @@
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.7rem;
-            font-weight: 400;
+            gap: 7px;
+            font-size: 0.85rem;
+            font-weight: 500;
             color: var(--text-secondary);
         }
 
         .legend-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 3px;
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
             flex-shrink: 0;
         }
 
         .legend-line {
-            width: 14px;
-            height: 2px;
+            width: 20px;
+            height: 3px;
             border-radius: 1px;
             flex-shrink: 0;
         }
@@ -321,6 +325,12 @@
             overflow: hidden;
         }
 
+        .task-bar.highlight {
+            background: transparent !important;
+            border-width: 2px !important;
+            border-color: var(--highlight-border) !important;
+        }
+
         .task-progress {
             height: 100%;
             background: var(--progress);
@@ -467,8 +477,8 @@
                     style="background:var(--bg-pending); border: 1.5px solid var(--pending-border);"></span>Pendiente</span>
             <span class="legend-item"><span class="legend-dot"
                     style="background:var(--bg-pending); border: 1.5px solid var(--progress);"></span>En progreso</span>
-            <span class="legend-item"><span class="legend-friday"></span>Dedicación proyecto inundación Rep. Dominicana
-                (Viernes)</span>
+            <span class="legend-item"><span class="legend-dot"
+                    style="background:transparent; border: 2px solid var(--highlight-border);"></span>Prioritario WaMA-WaDiT</span>
             <span class="legend-item"><span class="legend-line" style="background:var(--today)"></span>Hoy</span>
         </div>
 
@@ -495,7 +505,7 @@
                     <span class="stat-label">papers</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">2</span>
+                    <span class="stat-value">3</span>
                     <span class="stat-label">tareas WaMA-WaDiT</span>
                 </div>
                 <div class="stat">
@@ -514,21 +524,22 @@
         <script>
             (function () {
                 var tasks = [
-                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 0, started: true },
+                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 1, started: true },
                     { name: "Corrección P1 (Hidrograma)", start: "2026-04-17", end: "2026-04-26", progress: 0 },
                     { name: "Corrección P2 (Período retorno)", start: "2026-04-27", end: "2026-05-06", progress: 0 },
                     { name: "Propuesta P3 (Escala híbrida)", start: "2026-05-07", end: "2026-05-17", progress: 0 },
-                    { name: "T2.3 Downscaling climático", start: "2026-05-18", end: "2026-08-02", progress: 0 },
+                    { name: "T2.3 Wama Wadit (Downscaling)", start: "2026-05-18", end: "2026-08-02", progress: 0, highlight: true },
+                    { name: "Prep. y presentación WaMA-WaDiT", start: "2026-06-10", end: "2026-06-14", progress: 0, highlight: true },
                     { name: "Prep. presentación congreso", start: "2026-06-17", end: "2026-06-19", progress: 0 },
                     { name: "Congreso", start: "2026-06-22", end: "2026-06-26", progress: 0 },
                     { name: "Subir curso a Moodle", start: "2026-07-13", end: "2026-07-15", progress: 0 },
-                    { name: "T2.1 Errores sistemáticos", start: "2026-08-03", end: "2026-10-18", progress: 0 },
+                    { name: "T2.1 Wama Wadit (Errores sist.)", start: "2026-08-03", end: "2026-10-18", progress: 0, highlight: true },
                     { name: "Corrección P3 (Escala híbrida)", start: "2026-08-03", end: "2026-09-27", progress: 0 }
                 ];
 
                 var pStart = new Date("2026-04-16");
                 var pEnd = new Date("2026-11-02");
-                var today = new Date("2026-04-16"); /* Se actualiza la línea del "Hoy" al 16 abr */
+                var today = new Date("2026-04-17"); /* Se actualiza la línea del "Hoy" al 17 abr */
                 var totalDays = (pEnd - pStart) / 864e5;
                 var gantt = document.getElementById("gantt");
 
@@ -574,23 +585,13 @@
 
                 var gridHTML = '<div class="grid-area" style="position:relative;">';
 
-                var fd = new Date(pStart);
-                while (fd <= pEnd) {
-                    if (fd.getDay() === 5) {
-                        var l = pct(fd);
-                        var fw = (1 / totalDays * 100);
-                        gridHTML += '<div class="friday-highlight" style="left:' + l + '%;width:' + fw + '%;"></div>';
-                    }
-                    fd = new Date(fd.getTime() + 864e5);
-                }
-
                 for (var i = 1; i < weeks.length; i++) {
                     gridHTML += '<div class="grid-col" style="left:' + pct(weeks[i].start) + '%;"></div>';
                 }
 
                 var todayPct = pct(today);
                 gridHTML += '<div class="today-marker" style="left:' + todayPct + '%;"></div>';
-                gridHTML += '<div class="today-tag" style="left:' + todayPct + '%;">HOY · 16 ABR</div>';
+                gridHTML += '<div class="today-tag" style="left:' + todayPct + '%;">HOY · 17 ABR</div>';
 
                 for (var i = 0; i < tasks.length; i++) {
                     var t = tasks[i];
@@ -606,7 +607,7 @@
                         '<div class="task-label-name">' + t.name + '</div>' +
                         '<div class="task-label-dates">' + fmtDate(t.start) + ' — ' + fmtDate(t.end) + '</div>' +
                         '</div>' +
-                        '<div class="task-bar" style="left:' + left + '%;width:' + width + '%; border-color:' + borderColor + ';">' +
+                        '<div class="task-bar' + (t.highlight ? ' highlight' : '') + '" style="left:' + left + '%;width:' + width + '%; border-color:' + borderColor + ';">' +
                         '<div class="task-progress" style="width:' + t.progress + '%;"></div>' +
                         '</div>' +
                         '</div>';
