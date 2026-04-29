@@ -537,22 +537,22 @@
         <script>
             (function () {
                 var tasks = [
-                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 1, started: true },
-                    { name: "Corrección P1 (Hidrograma)", start: "2026-04-17", end: "2026-04-26", progress: 0 },
-                    { name: "Corrección P2 (Período retorno)", start: "2026-04-27", end: "2026-05-06", progress: 0 },
+                    { name: "Prep. slides doctorado", start: "2026-04-16", end: "2026-05-31", progress: 10, started: true },
+                    { name: "Corrección P1 (Hidrograma) → Manu", start: "2026-04-17", end: "2026-04-26", progress: 100 },
+                    { name: "Subir curso a Moodle", start: "2026-04-27", end: "2026-04-28", progress: 100 },
+                    { name: "Corrección P2 (Período retorno)", start: "2026-04-27", end: "2026-05-06", progress: 30, started: true },
                     { name: "Propuesta P3 (Escala híbrida)", start: "2026-05-07", end: "2026-05-17", progress: 0 },
                     { name: "T2.3 Wama Wadit (Downscaling)", start: "2026-05-18", end: "2026-08-02", progress: 0, highlight: true },
                     { name: "Prep. y presentación WaMA-WaDiT", start: "2026-06-10", end: "2026-06-14", progress: 0, highlight: true },
                     { name: "Prep. presentación congreso", start: "2026-06-17", end: "2026-06-19", progress: 0 },
                     { name: "Congreso", start: "2026-06-22", end: "2026-06-26", progress: 0 },
-                    { name: "Subir curso a Moodle", start: "2026-07-13", end: "2026-07-15", progress: 0 },
                     { name: "T2.1 Wama Wadit (Errores sist.)", start: "2026-08-03", end: "2026-10-18", progress: 0, highlight: true },
                     { name: "Corrección P3 (Escala híbrida)", start: "2026-08-03", end: "2026-09-27", progress: 0 }
                 ];
 
                 var pStart = new Date("2026-04-16");
                 var pEnd = new Date("2026-11-02");
-                var today = new Date("2026-04-17"); /* Se actualiza la línea del "Hoy" al 17 abr */
+                var today = new Date("2026-04-29"); /* Actualizado al 29 abr */
                 var totalDays = (pEnd - pStart) / 864e5;
                 var gantt = document.getElementById("gantt");
 
@@ -604,7 +604,7 @@
 
                 var todayPct = pct(today);
                 gridHTML += '<div class="today-marker" style="left:' + todayPct + '%;"></div>';
-                gridHTML += '<div class="today-tag" style="left:' + todayPct + '%;">HOY · 17 ABR</div>';
+                gridHTML += '<div class="today-tag" style="left:' + todayPct + '%;">HOY · 29 ABR</div>';
 
                 for (var i = 0; i < tasks.length; i++) {
                     var t = tasks[i];
